@@ -21,10 +21,6 @@ export interface NNTensor {
  * Primitive is used for information not in the nn.
  * Used in inputs, preprocess, postprocess, and outputs.
  *
- * The main difference between Primitive and NNRecord
- * is that Primitive can be scalar values or string,
- * while the most basic unit of NNRecord is NDArray.
- *
  * For primitives, it is better to directly encoded in meta.
  *
  * @generated from protobuf message nnextractor.Primitive
@@ -724,37 +720,37 @@ export enum NNRecordType {
  */
 export enum TaskflowType {
     /**
-     * @generated from protobuf enum value: S_UNSPECIFIED = 0;
+     * @generated from protobuf enum value: T_UNSPECIFIED = 0;
      */
-    S_UNSPECIFIED = 0,
+    T_UNSPECIFIED = 0,
     /**
-     * @generated from protobuf enum value: S_INPUT = 1;
+     * @generated from protobuf enum value: T_INPUT = 1;
      */
-    S_INPUT = 1,
+    T_INPUT = 1,
     /**
-     * @generated from protobuf enum value: S_PREPROCESS = 2;
+     * @generated from protobuf enum value: T_PREPROCESS = 2;
      */
-    S_PREPROCESS = 2,
+    T_PREPROCESS = 2,
     /**
-     * @generated from protobuf enum value: S_FORWARD = 3;
+     * @generated from protobuf enum value: T_FORWARD = 3;
      */
-    S_FORWARD = 3,
+    T_FORWARD = 3,
     /**
-     * @generated from protobuf enum value: S_BACKWARD = 4;
+     * @generated from protobuf enum value: T_BACKWARD = 4;
      */
-    S_BACKWARD = 4,
+    T_BACKWARD = 4,
     /**
-     * @generated from protobuf enum value: S_POSTPROCESS = 5;
+     * @generated from protobuf enum value: T_POSTPROCESS = 5;
      */
-    S_POSTPROCESS = 5,
+    T_POSTPROCESS = 5,
     /**
-     * @generated from protobuf enum value: S_OUTPUT = 6;
+     * @generated from protobuf enum value: T_OUTPUT = 6;
      */
-    S_OUTPUT = 6,
+    T_OUTPUT = 6,
     /**
-     * @generated from protobuf enum value: S_EXTRACTOR = 7;
+     * @generated from protobuf enum value: T_EXTRACTOR = 7;
      */
-    S_EXTRACTOR = 7
+    T_EXTRACTOR = 7
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class NNTensor$Type extends MessageType<NNTensor> {
