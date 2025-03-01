@@ -59,10 +59,6 @@ enum PrimitiveType {
 // Primitive is used for information not in the nn.
 // Used in inputs, preprocess, postprocess, and outputs.
 //
-// The main difference between Primitive and NNRecord
-// is that Primitive can be scalar values or string,
-// while the most basic unit of NNRecord is NDArray.
-//
 // For primitives, it is better to directly encoded in meta.
 message Primitive {
   PrimitiveType the_type = 1;
@@ -310,21 +306,21 @@ message NNNode {
 }
 
 enum TaskflowType {
-  S_UNSPECIFIED = 0;
+  T_UNSPECIFIED = 0;
 
-  S_INPUT = 1;
+  T_INPUT = 1;
 
-  S_PREPROCESS = 2;
+  T_PREPROCESS = 2;
 
-  S_FORWARD = 3;
+  T_FORWARD = 3;
 
-  S_BACKWARD = 4;
+  T_BACKWARD = 4;
 
-  S_POSTPROCESS = 5;
+  T_POSTPROCESS = 5;
 
-  S_OUTPUT = 6;
+  T_OUTPUT = 6;
 
-  S_EXTRACTOR = 7;
+  T_EXTRACTOR = 7;
 }
 
 message Taskflow {
