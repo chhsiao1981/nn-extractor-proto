@@ -391,97 +391,97 @@ export interface NNExtractor {
  */
 export enum NNTensorType {
     /**
-     * @generated from protobuf enum value: NDA_UNSPECIFIED = 0;
+     * @generated from protobuf enum value: NNT_UNSPECIFIED = 0;
      */
-    NDA_UNSPECIFIED = 0,
+    NNT_UNSPECIFIED = 0,
     /**
-     * @generated from protobuf enum value: NDA_BOOL = 1;
+     * @generated from protobuf enum value: NNT_BOOL = 1;
      */
-    NDA_BOOL = 1,
+    NNT_BOOL = 1,
     /**
-     * @generated from protobuf enum value: NDA_INT8 = 2;
+     * @generated from protobuf enum value: NNT_INT8 = 2;
      */
-    NDA_INT8 = 2,
+    NNT_INT8 = 2,
     /**
-     * @generated from protobuf enum value: NDA_INT16 = 3;
+     * @generated from protobuf enum value: NNT_INT16 = 3;
      */
-    NDA_INT16 = 3,
+    NNT_INT16 = 3,
     /**
-     * @generated from protobuf enum value: NDA_INT32 = 4;
+     * @generated from protobuf enum value: NNT_INT32 = 4;
      */
-    NDA_INT32 = 4,
+    NNT_INT32 = 4,
     /**
-     * @generated from protobuf enum value: NDA_INT64 = 5;
+     * @generated from protobuf enum value: NNT_INT64 = 5;
      */
-    NDA_INT64 = 5,
+    NNT_INT64 = 5,
     /**
-     * @generated from protobuf enum value: NDA_FLOAT32 = 6;
+     * @generated from protobuf enum value: NNT_FLOAT32 = 6;
      */
-    NDA_FLOAT32 = 6,
+    NNT_FLOAT32 = 6,
     /**
-     * @generated from protobuf enum value: NDA_FLOAT64 = 7;
+     * @generated from protobuf enum value: NNT_FLOAT64 = 7;
      */
-    NDA_FLOAT64 = 7,
+    NNT_FLOAT64 = 7,
     /**
-     * @generated from protobuf enum value: NDA_FLOAT16 = 8;
+     * @generated from protobuf enum value: NNT_FLOAT16 = 8;
      */
-    NDA_FLOAT16 = 8,
+    NNT_FLOAT16 = 8,
     /**
-     * @generated from protobuf enum value: NDA_UINT8 = 9;
+     * @generated from protobuf enum value: NNT_UINT8 = 9;
      */
-    NDA_UINT8 = 9,
+    NNT_UINT8 = 9,
     /**
-     * @generated from protobuf enum value: NDA_UINT16 = 10;
+     * @generated from protobuf enum value: NNT_UINT16 = 10;
      */
-    NDA_UINT16 = 10,
+    NNT_UINT16 = 10,
     /**
-     * @generated from protobuf enum value: NDA_UINT32 = 11;
+     * @generated from protobuf enum value: NNT_UINT32 = 11;
      */
-    NDA_UINT32 = 11,
+    NNT_UINT32 = 11,
     /**
-     * @generated from protobuf enum value: NDA_UINT64 = 12;
+     * @generated from protobuf enum value: NNT_UINT64 = 12;
      */
-    NDA_UINT64 = 12,
+    NNT_UINT64 = 12,
     /**
-     * @generated from protobuf enum value: NDA_BFLOAT16 = 13;
+     * @generated from protobuf enum value: NNT_BFLOAT16 = 13;
      */
-    NDA_BFLOAT16 = 13,
+    NNT_BFLOAT16 = 13,
     /**
-     * @generated from protobuf enum value: NDA_COMPLEX32 = 14;
+     * @generated from protobuf enum value: NNT_COMPLEX32 = 14;
      */
-    NDA_COMPLEX32 = 14,
+    NNT_COMPLEX32 = 14,
     /**
-     * @generated from protobuf enum value: NDA_COMPLEX64 = 15;
+     * @generated from protobuf enum value: NNT_COMPLEX64 = 15;
      */
-    NDA_COMPLEX64 = 15,
+    NNT_COMPLEX64 = 15,
     /**
-     * @generated from protobuf enum value: NDA_COMPLEX128 = 16;
+     * @generated from protobuf enum value: NNT_COMPLEX128 = 16;
      */
-    NDA_COMPLEX128 = 16,
+    NNT_COMPLEX128 = 16,
     /**
-     * @generated from protobuf enum value: NDA_UQINT8 = 17;
+     * @generated from protobuf enum value: NNT_UQINT8 = 17;
      */
-    NDA_UQINT8 = 17,
+    NNT_UQINT8 = 17,
     /**
-     * @generated from protobuf enum value: NDA_QINT8 = 18;
+     * @generated from protobuf enum value: NNT_QINT8 = 18;
      */
-    NDA_QINT8 = 18,
+    NNT_QINT8 = 18,
     /**
-     * @generated from protobuf enum value: NDA_QINT32 = 19;
+     * @generated from protobuf enum value: NNT_QINT32 = 19;
      */
-    NDA_QINT32 = 19,
+    NNT_QINT32 = 19,
     /**
-     * @generated from protobuf enum value: NDA_UQINT4 = 20;
+     * @generated from protobuf enum value: NNT_UQINT4 = 20;
      */
-    NDA_UQINT4 = 20,
+    NNT_UQINT4 = 20,
     /**
-     * @generated from protobuf enum value: NDA_FLOAT8_E4M3FN = 21;
+     * @generated from protobuf enum value: NNT_FLOAT8_E4M3FN = 21;
      */
-    NDA_FLOAT8_E4M3FN = 21,
+    NNT_FLOAT8_E4M3FN = 21,
     /**
-     * @generated from protobuf enum value: NDA_FLOAT8_E5M2 = 22;
+     * @generated from protobuf enum value: NNT_FLOAT8_E5M2 = 22;
      */
-    NDA_FLOAT8_E5M2 = 22
+    NNT_FLOAT8_E5M2 = 22
 }
 /**
  * @generated from protobuf enum nnextractor.PrimitiveType
