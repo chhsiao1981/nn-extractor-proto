@@ -4272,14 +4272,14 @@ proto.nnextractor.NNRecordType = {
  * @enum {number}
  */
 proto.nnextractor.TaskflowType = {
-  S_UNSPECIFIED: 0,
-  S_INPUT: 1,
-  S_PREPROCESS: 2,
-  S_FORWARD: 3,
-  S_BACKWARD: 4,
-  S_POSTPROCESS: 5,
-  S_OUTPUT: 6,
-  S_EXTRACTOR: 7
+  T_UNSPECIFIED: 0,
+  T_INPUT: 1,
+  T_PREPROCESS: 2,
+  T_FORWARD: 3,
+  T_BACKWARD: 4,
+  T_POSTPROCESS: 5,
+  T_OUTPUT: 6,
+  T_EXTRACTOR: 7
 };
 
 goog.object.extend(exports, proto.nnextractor);
