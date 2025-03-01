@@ -644,43 +644,53 @@ export enum OpType {
      */
     O_NONE = 3,
     /**
+     * cropping region (region: list[[start, stop, step]])
+     *
      * @generated from protobuf enum value: O_CROP = 4;
      */
     O_CROP = 4,
     /**
+     * padding region (region: list[[lower, upper]])
+     *
      * @generated from protobuf enum value: O_PAD = 5;
      */
     O_PAD = 5,
     /**
+     * flip axes (axes: list[int])
+     *
      * @generated from protobuf enum value: O_FLIP = 6;
      */
     O_FLIP = 6,
     /**
+     * origin (origin: list[number])
+     *
      * @generated from protobuf enum value: O_ORIGIN = 7;
      */
     O_ORIGIN = 7,
     /**
+     * spacing (spacing: list[number])
+     *
      * @generated from protobuf enum value: O_SPACING = 8;
      */
     O_SPACING = 8,
     /**
+     * direction (direction: list[list[number]])
+     *
      * @generated from protobuf enum value: O_DIRECTION = 9;
      */
     O_DIRECTION = 9,
     /**
+     * affine (affine: list[list[number]])
+     *
      * @generated from protobuf enum value: O_AFFINE = 10;
      */
     O_AFFINE = 10,
     /**
+     * geo-identity
+     *
      * @generated from protobuf enum value: O_GEO_IDENTITY = 11;
      */
-    O_GEO_IDENTITY = 11,
-    /**
-     * input image as NII
-     *
-     * @generated from protobuf enum value: O_NII = 12;
-     */
-    O_NII = 12
+    O_GEO_IDENTITY = 11
 }
 /**
  * @generated from protobuf enum nnextractor.NNRecordType

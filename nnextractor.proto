@@ -157,24 +157,29 @@ enum OpType {
   O_OTHER = 2;
   O_NONE = 3;
 
+  // cropping region (region: list[[start, stop, step]])
   O_CROP = 4;
 
+  // padding region (region: list[[lower, upper]])
   O_PAD = 5;
 
+  // flip axes (axes: list[int])
   O_FLIP = 6;
 
+  // origin (origin: list[number])
   O_ORIGIN = 7;
 
+  // spacing (spacing: list[number])
   O_SPACING = 8;
 
+  // direction (direction: list[list[number]])
   O_DIRECTION = 9;
 
+  // affine (affine: list[list[number]])
   O_AFFINE = 10;
 
+  // geo-identity
   O_GEO_IDENTITY = 11;
-
-  // input image as NII
-  O_NII = 12;
 }
 
 // Item is presented as either single item,
