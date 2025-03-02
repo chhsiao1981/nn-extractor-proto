@@ -690,7 +690,14 @@ export enum OpType {
      *
      * @generated from protobuf enum value: O_GEO_IDENTITY = 11;
      */
-    O_GEO_IDENTITY = 11
+    O_GEO_IDENTITY = 11,
+    /**
+     * unflip axes (axes: list[int])
+     *     as inverse of flip.
+     *
+     * @generated from protobuf enum value: O_UNFLIP = 12;
+     */
+    O_UNFLIP = 12
 }
 /**
  * @generated from protobuf enum nnextractor.NNRecordType
