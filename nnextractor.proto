@@ -70,6 +70,29 @@ message Primitive {
   optional sint32 i32 = 7;
 }
 
+enum RecursivePrimitiveType {
+  RP_UNSPECIFIED = 0;
+
+  RP_PRIMITIVE = 1;
+
+  RP_PRIMITIVES = 2;
+
+  RP_PRIMITIVE_MAP = 3;
+
+  RP_SLICE = 4;
+}
+
+// RecursivePrimitive
+//
+// not efficient encoding, but required as OpItem.op_params
+message RecursivePrimitive {
+  RecursivePrimitiveType the_type = 1;
+  optional Primitive primitive = 2;
+  repeated RecursivePrimitive primitives = 3;
+  map<string, RecursivePrimitive> primitive_map = 4;
+  repeated sint32 slice = 5;
+}
+
 message NII {
   NNTensor tensor = 1;
 
@@ -88,6 +111,59 @@ message NII {
   //            [ 8,  9, 10, 11],
   //            [12, 13, 14, 15]]
   repeated double affine = 5;
+}
+
+// Op Type
+//
+// The type of the operations.
+//
+// OpType is defined in the item / record level.
+enum OpType {
+  O_UNSPECIFIED = 0;
+
+  // https://journalofbigdata.springeropen.com/articles/10.1186/s40537-019-0197-0
+  O_UNKNOWN = 1;
+  O_OTHER = 2;
+  O_NONE = 3;
+
+  // cropping region (region: list[[start, stop, step]])
+  O_CROP = 4;
+
+  // padding region (region: list[[lower, upper]])
+  O_PAD = 5;
+
+  // flip axes (axes: list[int])
+  O_FLIP = 6;
+
+  // origin (origin: list[number])
+  O_ORIGIN = 7;
+
+  // spacing (spacing: list[number])
+  O_SPACING = 8;
+
+  // direction (direction: list[list[number]])
+  O_DIRECTION = 9;
+
+  // affine (affine: list[list[number]])
+  O_AFFINE = 10;
+
+  // geo-identity
+  O_GEO_IDENTITY = 11;
+
+  // unflip axes (axes: list[int])
+  //     as inverse of flip.
+  O_UNFLIP = 12;
+}
+
+// OpItem
+//
+// have op_params optional due to inefficient encode.
+//      possibly can be retrieved from metadata.
+message OpItem {
+  string name = 1;
+  OpType op_type = 2;
+  NNTensor tensor = 3;
+  optional RecursivePrimitive op_params = 4;
 }
 
 // Item Type
@@ -142,48 +218,9 @@ enum ItemType {
 
   // map of items
   I_MAP = 13;
-}
 
-// Op Type
-//
-// The type of the operations.
-//
-// OpType is defined in the item / record level.
-enum OpType {
-  O_UNSPECIFIED = 0;
-
-  // https://journalofbigdata.springeropen.com/articles/10.1186/s40537-019-0197-0
-  O_UNKNOWN = 1;
-  O_OTHER = 2;
-  O_NONE = 3;
-
-  // cropping region (region: list[[start, stop, step]])
-  O_CROP = 4;
-
-  // padding region (region: list[[lower, upper]])
-  O_PAD = 5;
-
-  // flip axes (axes: list[int])
-  O_FLIP = 6;
-
-  // origin (origin: list[number])
-  O_ORIGIN = 7;
-
-  // spacing (spacing: list[number])
-  O_SPACING = 8;
-
-  // direction (direction: list[list[number]])
-  O_DIRECTION = 9;
-
-  // affine (affine: list[list[number]])
-  O_AFFINE = 10;
-
-  // geo-identity
-  O_GEO_IDENTITY = 11;
-
-  // unflip axes (axes: list[int])
-  //     as inverse of flip.
-  O_UNFLIP = 12;
+  // op-item
+  I_OP_ITEM = 14;
 }
 
 // Item is presented as either single item,
@@ -209,9 +246,7 @@ message Item {
 
   map<string, Item> the_map = 8;
 
-  optional OpType op_type = 9;
-
-  optional Item op_params = 10;
+  optional OpItem op_item = 9;
 }
 
 message Items {

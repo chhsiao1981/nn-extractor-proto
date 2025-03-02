@@ -56,6 +56,37 @@ export interface Primitive {
     i32?: number;
 }
 /**
+ * RecursivePrimitive
+ *
+ * not efficient encoding, but required as OpItem.op_params
+ *
+ * @generated from protobuf message nnextractor.RecursivePrimitive
+ */
+export interface RecursivePrimitive {
+    /**
+     * @generated from protobuf field: nnextractor.RecursivePrimitiveType the_type = 1;
+     */
+    theType: RecursivePrimitiveType;
+    /**
+     * @generated from protobuf field: optional nnextractor.Primitive primitive = 2;
+     */
+    primitive?: Primitive;
+    /**
+     * @generated from protobuf field: repeated nnextractor.RecursivePrimitive primitives = 3;
+     */
+    primitives: RecursivePrimitive[];
+    /**
+     * @generated from protobuf field: map<string, nnextractor.RecursivePrimitive> primitive_map = 4;
+     */
+    primitiveMap: {
+        [key: string]: RecursivePrimitive;
+    };
+    /**
+     * @generated from protobuf field: repeated sint32 slice = 5;
+     */
+    slice: number[];
+}
+/**
  * @generated from protobuf message nnextractor.NII
  */
 export interface NII {
@@ -89,6 +120,32 @@ export interface NII {
      * @generated from protobuf field: repeated double affine = 5;
      */
     affine: number[];
+}
+/**
+ * OpItem
+ *
+ * have op_params optional due to inefficient encode.
+ *      possibly can be retrieved from metadata.
+ *
+ * @generated from protobuf message nnextractor.OpItem
+ */
+export interface OpItem {
+    /**
+     * @generated from protobuf field: string name = 1;
+     */
+    name: string;
+    /**
+     * @generated from protobuf field: nnextractor.OpType op_type = 2;
+     */
+    opType: OpType;
+    /**
+     * @generated from protobuf field: nnextractor.NNTensor tensor = 3;
+     */
+    tensor?: NNTensor;
+    /**
+     * @generated from protobuf field: optional nnextractor.RecursivePrimitive op_params = 4;
+     */
+    opParams?: RecursivePrimitive;
 }
 /**
  * Item is presented as either single item,
@@ -139,13 +196,9 @@ export interface Item {
         [key: string]: Item;
     };
     /**
-     * @generated from protobuf field: optional nnextractor.OpType op_type = 9;
+     * @generated from protobuf field: optional nnextractor.OpItem op_item = 9;
      */
-    opType?: OpType;
-    /**
-     * @generated from protobuf field: optional nnextractor.Item op_params = 10;
-     */
-    opParams?: Item;
+    opItem?: OpItem;
 }
 /**
  * @generated from protobuf message nnextractor.Items
@@ -517,6 +570,115 @@ export enum PrimitiveType {
     P_I32 = 9
 }
 /**
+ * @generated from protobuf enum nnextractor.RecursivePrimitiveType
+ */
+export enum RecursivePrimitiveType {
+    /**
+     * @generated from protobuf enum value: RP_UNSPECIFIED = 0;
+     */
+    RP_UNSPECIFIED = 0,
+    /**
+     * @generated from protobuf enum value: RP_PRIMITIVE = 1;
+     */
+    RP_PRIMITIVE = 1,
+    /**
+     * @generated from protobuf enum value: RP_PRIMITIVES = 2;
+     */
+    RP_PRIMITIVES = 2,
+    /**
+     * @generated from protobuf enum value: RP_PRIMITIVE_MAP = 3;
+     */
+    RP_PRIMITIVE_MAP = 3,
+    /**
+     * @generated from protobuf enum value: RP_SLICE = 4;
+     */
+    RP_SLICE = 4
+}
+/**
+ * Op Type
+ *
+ * The type of the operations.
+ *
+ * OpType is defined in the item / record level.
+ *
+ * @generated from protobuf enum nnextractor.OpType
+ */
+export enum OpType {
+    /**
+     * @generated from protobuf enum value: O_UNSPECIFIED = 0;
+     */
+    O_UNSPECIFIED = 0,
+    /**
+     * https://journalofbigdata.springeropen.com/articles/10.1186/s40537-019-0197-0
+     *
+     * @generated from protobuf enum value: O_UNKNOWN = 1;
+     */
+    O_UNKNOWN = 1,
+    /**
+     * @generated from protobuf enum value: O_OTHER = 2;
+     */
+    O_OTHER = 2,
+    /**
+     * @generated from protobuf enum value: O_NONE = 3;
+     */
+    O_NONE = 3,
+    /**
+     * cropping region (region: list[[start, stop, step]])
+     *
+     * @generated from protobuf enum value: O_CROP = 4;
+     */
+    O_CROP = 4,
+    /**
+     * padding region (region: list[[lower, upper]])
+     *
+     * @generated from protobuf enum value: O_PAD = 5;
+     */
+    O_PAD = 5,
+    /**
+     * flip axes (axes: list[int])
+     *
+     * @generated from protobuf enum value: O_FLIP = 6;
+     */
+    O_FLIP = 6,
+    /**
+     * origin (origin: list[number])
+     *
+     * @generated from protobuf enum value: O_ORIGIN = 7;
+     */
+    O_ORIGIN = 7,
+    /**
+     * spacing (spacing: list[number])
+     *
+     * @generated from protobuf enum value: O_SPACING = 8;
+     */
+    O_SPACING = 8,
+    /**
+     * direction (direction: list[list[number]])
+     *
+     * @generated from protobuf enum value: O_DIRECTION = 9;
+     */
+    O_DIRECTION = 9,
+    /**
+     * affine (affine: list[list[number]])
+     *
+     * @generated from protobuf enum value: O_AFFINE = 10;
+     */
+    O_AFFINE = 10,
+    /**
+     * geo-identity
+     *
+     * @generated from protobuf enum value: O_GEO_IDENTITY = 11;
+     */
+    O_GEO_IDENTITY = 11,
+    /**
+     * unflip axes (axes: list[int])
+     *     as inverse of flip.
+     *
+     * @generated from protobuf enum value: O_UNFLIP = 12;
+     */
+    O_UNFLIP = 12
+}
+/**
  * Item Type
  *
  * The type of the item.
@@ -613,91 +775,13 @@ export enum ItemType {
      *
      * @generated from protobuf enum value: I_MAP = 13;
      */
-    I_MAP = 13
-}
-/**
- * Op Type
- *
- * The type of the operations.
- *
- * OpType is defined in the item / record level.
- *
- * @generated from protobuf enum nnextractor.OpType
- */
-export enum OpType {
+    I_MAP = 13,
     /**
-     * @generated from protobuf enum value: O_UNSPECIFIED = 0;
-     */
-    O_UNSPECIFIED = 0,
-    /**
-     * https://journalofbigdata.springeropen.com/articles/10.1186/s40537-019-0197-0
+     * op-item
      *
-     * @generated from protobuf enum value: O_UNKNOWN = 1;
+     * @generated from protobuf enum value: I_OP_ITEM = 14;
      */
-    O_UNKNOWN = 1,
-    /**
-     * @generated from protobuf enum value: O_OTHER = 2;
-     */
-    O_OTHER = 2,
-    /**
-     * @generated from protobuf enum value: O_NONE = 3;
-     */
-    O_NONE = 3,
-    /**
-     * cropping region (region: list[[start, stop, step]])
-     *
-     * @generated from protobuf enum value: O_CROP = 4;
-     */
-    O_CROP = 4,
-    /**
-     * padding region (region: list[[lower, upper]])
-     *
-     * @generated from protobuf enum value: O_PAD = 5;
-     */
-    O_PAD = 5,
-    /**
-     * flip axes (axes: list[int])
-     *
-     * @generated from protobuf enum value: O_FLIP = 6;
-     */
-    O_FLIP = 6,
-    /**
-     * origin (origin: list[number])
-     *
-     * @generated from protobuf enum value: O_ORIGIN = 7;
-     */
-    O_ORIGIN = 7,
-    /**
-     * spacing (spacing: list[number])
-     *
-     * @generated from protobuf enum value: O_SPACING = 8;
-     */
-    O_SPACING = 8,
-    /**
-     * direction (direction: list[list[number]])
-     *
-     * @generated from protobuf enum value: O_DIRECTION = 9;
-     */
-    O_DIRECTION = 9,
-    /**
-     * affine (affine: list[list[number]])
-     *
-     * @generated from protobuf enum value: O_AFFINE = 10;
-     */
-    O_AFFINE = 10,
-    /**
-     * geo-identity
-     *
-     * @generated from protobuf enum value: O_GEO_IDENTITY = 11;
-     */
-    O_GEO_IDENTITY = 11,
-    /**
-     * unflip axes (axes: list[int])
-     *     as inverse of flip.
-     *
-     * @generated from protobuf enum value: O_UNFLIP = 12;
-     */
-    O_UNFLIP = 12
+    I_OP_ITEM = 14
 }
 /**
  * @generated from protobuf enum nnextractor.NNRecordType
@@ -801,6 +885,22 @@ class Primitive$Type extends MessageType<Primitive> {
  */
 export const Primitive = new Primitive$Type();
 // @generated message type with reflection information, may provide speed optimized methods
+class RecursivePrimitive$Type extends MessageType<RecursivePrimitive> {
+    constructor() {
+        super("nnextractor.RecursivePrimitive", [
+            { no: 1, name: "the_type", kind: "enum", T: () => ["nnextractor.RecursivePrimitiveType", RecursivePrimitiveType] },
+            { no: 2, name: "primitive", kind: "message", T: () => Primitive },
+            { no: 3, name: "primitives", kind: "message", repeat: 1 /*RepeatType.PACKED*/, T: () => RecursivePrimitive },
+            { no: 4, name: "primitive_map", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "message", T: () => RecursivePrimitive } },
+            { no: 5, name: "slice", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 17 /*ScalarType.SINT32*/ }
+        ]);
+    }
+}
+/**
+ * @generated MessageType for protobuf message nnextractor.RecursivePrimitive
+ */
+export const RecursivePrimitive = new RecursivePrimitive$Type();
+// @generated message type with reflection information, may provide speed optimized methods
 class NII$Type extends MessageType<NII> {
     constructor() {
         super("nnextractor.NII", [
@@ -817,6 +917,21 @@ class NII$Type extends MessageType<NII> {
  */
 export const NII = new NII$Type();
 // @generated message type with reflection information, may provide speed optimized methods
+class OpItem$Type extends MessageType<OpItem> {
+    constructor() {
+        super("nnextractor.OpItem", [
+            { no: 1, name: "name", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 2, name: "op_type", kind: "enum", T: () => ["nnextractor.OpType", OpType] },
+            { no: 3, name: "tensor", kind: "message", T: () => NNTensor },
+            { no: 4, name: "op_params", kind: "message", T: () => RecursivePrimitive }
+        ]);
+    }
+}
+/**
+ * @generated MessageType for protobuf message nnextractor.OpItem
+ */
+export const OpItem = new OpItem$Type();
+// @generated message type with reflection information, may provide speed optimized methods
 class Item$Type extends MessageType<Item> {
     constructor() {
         super("nnextractor.Item", [
@@ -828,8 +943,7 @@ class Item$Type extends MessageType<Item> {
             { no: 6, name: "nii", kind: "message", T: () => NII },
             { no: 7, name: "the_list", kind: "message", repeat: 1 /*RepeatType.PACKED*/, T: () => Item },
             { no: 8, name: "the_map", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "message", T: () => Item } },
-            { no: 9, name: "op_type", kind: "enum", opt: true, T: () => ["nnextractor.OpType", OpType] },
-            { no: 10, name: "op_params", kind: "message", T: () => Item }
+            { no: 9, name: "op_item", kind: "message", T: () => OpItem }
         ]);
     }
 }
