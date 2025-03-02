@@ -180,6 +180,10 @@ enum OpType {
 
   // geo-identity
   O_GEO_IDENTITY = 11;
+
+  // unflip axes (axes: list[int])
+  //     as inverse of flip.
+  O_UNFLIP = 12;
 }
 
 // Item is presented as either single item,
