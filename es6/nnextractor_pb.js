@@ -2814,8 +2814,7 @@ recordsList: jspb.Message.toObjectList(msg.getRecordsList(),
     proto.nnextractor.NNRecord.toObject, includeInstance),
 theMapMap: (f = msg.getTheMapMap()) ? f.toObject(includeInstance, proto.nnextractor.NNRecord.toObject) : [],
 meta: (f = msg.getMeta()) && proto.nnextractor.NNRecordMeta.toObject(includeInstance, f),
-opType: (f = jspb.Message.getField(msg, 7)) == null ? undefined : f,
-opParams: (f = msg.getOpParams()) && proto.nnextractor.Item.toObject(includeInstance, f)
+opItem: (f = msg.getOpItem()) && proto.nnextractor.OpItem.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2882,13 +2881,9 @@ proto.nnextractor.NNRecord.deserializeBinaryFromReader = function(msg, reader) {
       msg.setMeta(value);
       break;
     case 7:
-      var value = /** @type {!proto.nnextractor.OpType} */ (reader.readEnum());
-      msg.setOpType(value);
-      break;
-    case 8:
-      var value = new proto.nnextractor.Item;
-      reader.readMessage(value,proto.nnextractor.Item.deserializeBinaryFromReader);
-      msg.setOpParams(value);
+      var value = new proto.nnextractor.OpItem;
+      reader.readMessage(value,proto.nnextractor.OpItem.deserializeBinaryFromReader);
+      msg.setOpItem(value);
       break;
     default:
       reader.skipField();
@@ -2961,19 +2956,12 @@ proto.nnextractor.NNRecord.serializeBinaryToWriter = function(message, writer) {
       proto.nnextractor.NNRecordMeta.serializeBinaryToWriter
     );
   }
-  f = /** @type {!proto.nnextractor.OpType} */ (jspb.Message.getField(message, 7));
-  if (f != null) {
-    writer.writeEnum(
-      7,
-      f
-    );
-  }
-  f = message.getOpParams();
+  f = message.getOpItem();
   if (f != null) {
     writer.writeMessage(
-      8,
+      7,
       f,
-      proto.nnextractor.Item.serializeBinaryToWriter
+      proto.nnextractor.OpItem.serializeBinaryToWriter
     );
   }
 };
@@ -3169,57 +3157,21 @@ proto.nnextractor.NNRecord.prototype.hasMeta = function() {
 
 
 /**
- * optional OpType op_type = 7;
- * @return {!proto.nnextractor.OpType}
+ * optional OpItem op_item = 7;
+ * @return {?proto.nnextractor.OpItem}
  */
-proto.nnextractor.NNRecord.prototype.getOpType = function() {
-  return /** @type {!proto.nnextractor.OpType} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+proto.nnextractor.NNRecord.prototype.getOpItem = function() {
+  return /** @type{?proto.nnextractor.OpItem} */ (
+    jspb.Message.getWrapperField(this, proto.nnextractor.OpItem, 7));
 };
 
 
 /**
- * @param {!proto.nnextractor.OpType} value
- * @return {!proto.nnextractor.NNRecord} returns this
- */
-proto.nnextractor.NNRecord.prototype.setOpType = function(value) {
-  return jspb.Message.setField(this, 7, value);
-};
-
-
-/**
- * Clears the field making it undefined.
- * @return {!proto.nnextractor.NNRecord} returns this
- */
-proto.nnextractor.NNRecord.prototype.clearOpType = function() {
-  return jspb.Message.setField(this, 7, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.nnextractor.NNRecord.prototype.hasOpType = function() {
-  return jspb.Message.getField(this, 7) != null;
-};
-
-
-/**
- * optional Item op_params = 8;
- * @return {?proto.nnextractor.Item}
- */
-proto.nnextractor.NNRecord.prototype.getOpParams = function() {
-  return /** @type{?proto.nnextractor.Item} */ (
-    jspb.Message.getWrapperField(this, proto.nnextractor.Item, 8));
-};
-
-
-/**
- * @param {?proto.nnextractor.Item|undefined} value
+ * @param {?proto.nnextractor.OpItem|undefined} value
  * @return {!proto.nnextractor.NNRecord} returns this
 */
-proto.nnextractor.NNRecord.prototype.setOpParams = function(value) {
-  return jspb.Message.setWrapperField(this, 8, value);
+proto.nnextractor.NNRecord.prototype.setOpItem = function(value) {
+  return jspb.Message.setWrapperField(this, 7, value);
 };
 
 
@@ -3227,8 +3179,8 @@ proto.nnextractor.NNRecord.prototype.setOpParams = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.nnextractor.NNRecord} returns this
  */
-proto.nnextractor.NNRecord.prototype.clearOpParams = function() {
-  return this.setOpParams(undefined);
+proto.nnextractor.NNRecord.prototype.clearOpItem = function() {
+  return this.setOpItem(undefined);
 };
 
 
@@ -3236,8 +3188,8 @@ proto.nnextractor.NNRecord.prototype.clearOpParams = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.nnextractor.NNRecord.prototype.hasOpParams = function() {
-  return jspb.Message.getField(this, 8) != null;
+proto.nnextractor.NNRecord.prototype.hasOpItem = function() {
+  return jspb.Message.getField(this, 7) != null;
 };
 
 
@@ -4852,7 +4804,8 @@ proto.nnextractor.NNRecordType = {
   NNR_ARRAY: 1,
   NNR_LIST: 3,
   NNR_MAP: 4,
-  NNR_META: 5
+  NNR_META: 5,
+  NNR_OP_ITEM: 6
 };
 
 /**
