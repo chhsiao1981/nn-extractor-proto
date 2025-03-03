@@ -82,9 +82,9 @@ export interface RecursivePrimitive {
         [key: string]: RecursivePrimitive;
     };
     /**
-     * @generated from protobuf field: repeated sint32 slice = 5;
+     * @generated from protobuf field: repeated nnextractor.Primitive slice = 5;
      */
-    slice: number[];
+    slice: Primitive[];
 }
 /**
  * @generated from protobuf message nnextractor.NII
@@ -893,7 +893,7 @@ class RecursivePrimitive$Type extends MessageType<RecursivePrimitive> {
             { no: 2, name: "primitive", kind: "message", T: () => Primitive },
             { no: 3, name: "primitives", kind: "message", repeat: 1 /*RepeatType.PACKED*/, T: () => RecursivePrimitive },
             { no: 4, name: "primitive_map", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "message", T: () => RecursivePrimitive } },
-            { no: 5, name: "slice", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 17 /*ScalarType.SINT32*/ }
+            { no: 5, name: "slice", kind: "message", repeat: 1 /*RepeatType.PACKED*/, T: () => Primitive }
         ]);
     }
 }

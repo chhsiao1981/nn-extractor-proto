@@ -90,7 +90,7 @@ message RecursivePrimitive {
   optional Primitive primitive = 2;
   repeated RecursivePrimitive primitives = 3;
   map<string, RecursivePrimitive> primitive_map = 4;
-  repeated sint32 slice = 5;
+  repeated Primitive slice = 5;
 }
 
 message NII {
