@@ -96,21 +96,21 @@ message RecursivePrimitive {
 message NII {
   NNTensor tensor = 1;
 
-  repeated double origin = 2;
+  repeated double origin_ras = 2;
 
   // flattened [[0, 1, 2],
   //            [3, 4, 5],
   //            [6, 7, 8]]
-  repeated double direction = 3;
+  repeated double direction_ras = 3;
 
-  repeated double spacing = 4;
+  repeated double spacing_ras = 4;
 
   // optional
   // flattened [[ 0,  1,  2,  3],
   //            [ 4,  5,  6,  7],
   //            [ 8,  9, 10, 11],
   //            [12, 13, 14, 15]]
-  repeated double affine = 5;
+  repeated double affine_ras = 5;
 }
 
 // Op Type

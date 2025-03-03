@@ -1302,10 +1302,10 @@ proto.nnextractor.NII.prototype.toObject = function(opt_includeInstance) {
 proto.nnextractor.NII.toObject = function(includeInstance, msg) {
   var f, obj = {
 tensor: (f = msg.getTensor()) && proto.nnextractor.NNTensor.toObject(includeInstance, f),
-originList: (f = jspb.Message.getRepeatedFloatingPointField(msg, 2)) == null ? undefined : f,
-directionList: (f = jspb.Message.getRepeatedFloatingPointField(msg, 3)) == null ? undefined : f,
-spacingList: (f = jspb.Message.getRepeatedFloatingPointField(msg, 4)) == null ? undefined : f,
-affineList: (f = jspb.Message.getRepeatedFloatingPointField(msg, 5)) == null ? undefined : f
+originRasList: (f = jspb.Message.getRepeatedFloatingPointField(msg, 2)) == null ? undefined : f,
+directionRasList: (f = jspb.Message.getRepeatedFloatingPointField(msg, 3)) == null ? undefined : f,
+spacingRasList: (f = jspb.Message.getRepeatedFloatingPointField(msg, 4)) == null ? undefined : f,
+affineRasList: (f = jspb.Message.getRepeatedFloatingPointField(msg, 5)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1350,25 +1350,25 @@ proto.nnextractor.NII.deserializeBinaryFromReader = function(msg, reader) {
     case 2:
       var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedDouble() : [reader.readDouble()]);
       for (var i = 0; i < values.length; i++) {
-        msg.addOrigin(values[i]);
+        msg.addOriginRas(values[i]);
       }
       break;
     case 3:
       var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedDouble() : [reader.readDouble()]);
       for (var i = 0; i < values.length; i++) {
-        msg.addDirection(values[i]);
+        msg.addDirectionRas(values[i]);
       }
       break;
     case 4:
       var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedDouble() : [reader.readDouble()]);
       for (var i = 0; i < values.length; i++) {
-        msg.addSpacing(values[i]);
+        msg.addSpacingRas(values[i]);
       }
       break;
     case 5:
       var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedDouble() : [reader.readDouble()]);
       for (var i = 0; i < values.length; i++) {
-        msg.addAffine(values[i]);
+        msg.addAffineRas(values[i]);
       }
       break;
     default:
@@ -1408,28 +1408,28 @@ proto.nnextractor.NII.serializeBinaryToWriter = function(message, writer) {
       proto.nnextractor.NNTensor.serializeBinaryToWriter
     );
   }
-  f = message.getOriginList();
+  f = message.getOriginRasList();
   if (f.length > 0) {
     writer.writePackedDouble(
       2,
       f
     );
   }
-  f = message.getDirectionList();
+  f = message.getDirectionRasList();
   if (f.length > 0) {
     writer.writePackedDouble(
       3,
       f
     );
   }
-  f = message.getSpacingList();
+  f = message.getSpacingRasList();
   if (f.length > 0) {
     writer.writePackedDouble(
       4,
       f
     );
   }
-  f = message.getAffineList();
+  f = message.getAffineRasList();
   if (f.length > 0) {
     writer.writePackedDouble(
       5,
@@ -1477,10 +1477,10 @@ proto.nnextractor.NII.prototype.hasTensor = function() {
 
 
 /**
- * repeated double origin = 2;
+ * repeated double origin_ras = 2;
  * @return {!Array<number>}
  */
-proto.nnextractor.NII.prototype.getOriginList = function() {
+proto.nnextractor.NII.prototype.getOriginRasList = function() {
   return /** @type {!Array<number>} */ (jspb.Message.getRepeatedFloatingPointField(this, 2));
 };
 
@@ -1489,7 +1489,7 @@ proto.nnextractor.NII.prototype.getOriginList = function() {
  * @param {!Array<number>} value
  * @return {!proto.nnextractor.NII} returns this
  */
-proto.nnextractor.NII.prototype.setOriginList = function(value) {
+proto.nnextractor.NII.prototype.setOriginRasList = function(value) {
   return jspb.Message.setField(this, 2, value || []);
 };
 
@@ -1499,7 +1499,7 @@ proto.nnextractor.NII.prototype.setOriginList = function(value) {
  * @param {number=} opt_index
  * @return {!proto.nnextractor.NII} returns this
  */
-proto.nnextractor.NII.prototype.addOrigin = function(value, opt_index) {
+proto.nnextractor.NII.prototype.addOriginRas = function(value, opt_index) {
   return jspb.Message.addToRepeatedField(this, 2, value, opt_index);
 };
 
@@ -1508,16 +1508,16 @@ proto.nnextractor.NII.prototype.addOrigin = function(value, opt_index) {
  * Clears the list making it empty but non-null.
  * @return {!proto.nnextractor.NII} returns this
  */
-proto.nnextractor.NII.prototype.clearOriginList = function() {
-  return this.setOriginList([]);
+proto.nnextractor.NII.prototype.clearOriginRasList = function() {
+  return this.setOriginRasList([]);
 };
 
 
 /**
- * repeated double direction = 3;
+ * repeated double direction_ras = 3;
  * @return {!Array<number>}
  */
-proto.nnextractor.NII.prototype.getDirectionList = function() {
+proto.nnextractor.NII.prototype.getDirectionRasList = function() {
   return /** @type {!Array<number>} */ (jspb.Message.getRepeatedFloatingPointField(this, 3));
 };
 
@@ -1526,7 +1526,7 @@ proto.nnextractor.NII.prototype.getDirectionList = function() {
  * @param {!Array<number>} value
  * @return {!proto.nnextractor.NII} returns this
  */
-proto.nnextractor.NII.prototype.setDirectionList = function(value) {
+proto.nnextractor.NII.prototype.setDirectionRasList = function(value) {
   return jspb.Message.setField(this, 3, value || []);
 };
 
@@ -1536,7 +1536,7 @@ proto.nnextractor.NII.prototype.setDirectionList = function(value) {
  * @param {number=} opt_index
  * @return {!proto.nnextractor.NII} returns this
  */
-proto.nnextractor.NII.prototype.addDirection = function(value, opt_index) {
+proto.nnextractor.NII.prototype.addDirectionRas = function(value, opt_index) {
   return jspb.Message.addToRepeatedField(this, 3, value, opt_index);
 };
 
@@ -1545,16 +1545,16 @@ proto.nnextractor.NII.prototype.addDirection = function(value, opt_index) {
  * Clears the list making it empty but non-null.
  * @return {!proto.nnextractor.NII} returns this
  */
-proto.nnextractor.NII.prototype.clearDirectionList = function() {
-  return this.setDirectionList([]);
+proto.nnextractor.NII.prototype.clearDirectionRasList = function() {
+  return this.setDirectionRasList([]);
 };
 
 
 /**
- * repeated double spacing = 4;
+ * repeated double spacing_ras = 4;
  * @return {!Array<number>}
  */
-proto.nnextractor.NII.prototype.getSpacingList = function() {
+proto.nnextractor.NII.prototype.getSpacingRasList = function() {
   return /** @type {!Array<number>} */ (jspb.Message.getRepeatedFloatingPointField(this, 4));
 };
 
@@ -1563,7 +1563,7 @@ proto.nnextractor.NII.prototype.getSpacingList = function() {
  * @param {!Array<number>} value
  * @return {!proto.nnextractor.NII} returns this
  */
-proto.nnextractor.NII.prototype.setSpacingList = function(value) {
+proto.nnextractor.NII.prototype.setSpacingRasList = function(value) {
   return jspb.Message.setField(this, 4, value || []);
 };
 
@@ -1573,7 +1573,7 @@ proto.nnextractor.NII.prototype.setSpacingList = function(value) {
  * @param {number=} opt_index
  * @return {!proto.nnextractor.NII} returns this
  */
-proto.nnextractor.NII.prototype.addSpacing = function(value, opt_index) {
+proto.nnextractor.NII.prototype.addSpacingRas = function(value, opt_index) {
   return jspb.Message.addToRepeatedField(this, 4, value, opt_index);
 };
 
@@ -1582,16 +1582,16 @@ proto.nnextractor.NII.prototype.addSpacing = function(value, opt_index) {
  * Clears the list making it empty but non-null.
  * @return {!proto.nnextractor.NII} returns this
  */
-proto.nnextractor.NII.prototype.clearSpacingList = function() {
-  return this.setSpacingList([]);
+proto.nnextractor.NII.prototype.clearSpacingRasList = function() {
+  return this.setSpacingRasList([]);
 };
 
 
 /**
- * repeated double affine = 5;
+ * repeated double affine_ras = 5;
  * @return {!Array<number>}
  */
-proto.nnextractor.NII.prototype.getAffineList = function() {
+proto.nnextractor.NII.prototype.getAffineRasList = function() {
   return /** @type {!Array<number>} */ (jspb.Message.getRepeatedFloatingPointField(this, 5));
 };
 
@@ -1600,7 +1600,7 @@ proto.nnextractor.NII.prototype.getAffineList = function() {
  * @param {!Array<number>} value
  * @return {!proto.nnextractor.NII} returns this
  */
-proto.nnextractor.NII.prototype.setAffineList = function(value) {
+proto.nnextractor.NII.prototype.setAffineRasList = function(value) {
   return jspb.Message.setField(this, 5, value || []);
 };
 
@@ -1610,7 +1610,7 @@ proto.nnextractor.NII.prototype.setAffineList = function(value) {
  * @param {number=} opt_index
  * @return {!proto.nnextractor.NII} returns this
  */
-proto.nnextractor.NII.prototype.addAffine = function(value, opt_index) {
+proto.nnextractor.NII.prototype.addAffineRas = function(value, opt_index) {
   return jspb.Message.addToRepeatedField(this, 5, value, opt_index);
 };
 
@@ -1619,8 +1619,8 @@ proto.nnextractor.NII.prototype.addAffine = function(value, opt_index) {
  * Clears the list making it empty but non-null.
  * @return {!proto.nnextractor.NII} returns this
  */
-proto.nnextractor.NII.prototype.clearAffineList = function() {
-  return this.setAffineList([]);
+proto.nnextractor.NII.prototype.clearAffineRasList = function() {
+  return this.setAffineRasList([]);
 };
 
 
