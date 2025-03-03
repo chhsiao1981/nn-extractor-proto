@@ -373,6 +373,14 @@ export interface Taskflow {
      * @generated from protobuf field: optional string name = 3;
      */
     name?: string;
+    /**
+     * @generated from protobuf field: optional nnextractor.OpType op_type = 4;
+     */
+    opType?: OpType;
+    /**
+     * @generated from protobuf field: optional nnextractor.RecursivePrimitive op_params = 5;
+     */
+    opParams?: RecursivePrimitive;
 }
 /**
  * NNExtractor
@@ -1033,7 +1041,9 @@ class Taskflow$Type extends MessageType<Taskflow> {
         super("nnextractor.Taskflow", [
             { no: 1, name: "the_type", kind: "enum", T: () => ["nnextractor.TaskflowType", TaskflowType] },
             { no: 2, name: "flow_id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
-            { no: 3, name: "name", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ }
+            { no: 3, name: "name", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
+            { no: 4, name: "op_type", kind: "enum", opt: true, T: () => ["nnextractor.OpType", OpType] },
+            { no: 5, name: "op_params", kind: "message", T: () => RecursivePrimitive }
         ]);
     }
 }

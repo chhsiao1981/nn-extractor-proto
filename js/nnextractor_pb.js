@@ -3924,7 +3924,9 @@ proto.nnextractor.Taskflow.toObject = function(includeInstance, msg) {
   var f, obj = {
 theType: jspb.Message.getFieldWithDefault(msg, 1, 0),
 flowId: jspb.Message.getFieldWithDefault(msg, 2, 0),
-name: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f
+name: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f,
+opType: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f,
+opParams: (f = msg.getOpParams()) && proto.nnextractor.RecursivePrimitive.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3972,6 +3974,15 @@ proto.nnextractor.Taskflow.deserializeBinaryFromReader = function(msg, reader) {
     case 3:
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
+      break;
+    case 4:
+      var value = /** @type {!proto.nnextractor.OpType} */ (reader.readEnum());
+      msg.setOpType(value);
+      break;
+    case 5:
+      var value = new proto.nnextractor.RecursivePrimitive;
+      reader.readMessage(value,proto.nnextractor.RecursivePrimitive.deserializeBinaryFromReader);
+      msg.setOpParams(value);
       break;
     default:
       reader.skipField();
@@ -4021,6 +4032,21 @@ proto.nnextractor.Taskflow.serializeBinaryToWriter = function(message, writer) {
     writer.writeString(
       3,
       f
+    );
+  }
+  f = /** @type {!proto.nnextractor.OpType} */ (jspb.Message.getField(message, 4));
+  if (f != null) {
+    writer.writeEnum(
+      4,
+      f
+    );
+  }
+  f = message.getOpParams();
+  if (f != null) {
+    writer.writeMessage(
+      5,
+      f,
+      proto.nnextractor.RecursivePrimitive.serializeBinaryToWriter
     );
   }
 };
@@ -4095,6 +4121,79 @@ proto.nnextractor.Taskflow.prototype.clearName = function() {
  */
 proto.nnextractor.Taskflow.prototype.hasName = function() {
   return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional OpType op_type = 4;
+ * @return {!proto.nnextractor.OpType}
+ */
+proto.nnextractor.Taskflow.prototype.getOpType = function() {
+  return /** @type {!proto.nnextractor.OpType} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {!proto.nnextractor.OpType} value
+ * @return {!proto.nnextractor.Taskflow} returns this
+ */
+proto.nnextractor.Taskflow.prototype.setOpType = function(value) {
+  return jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.nnextractor.Taskflow} returns this
+ */
+proto.nnextractor.Taskflow.prototype.clearOpType = function() {
+  return jspb.Message.setField(this, 4, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.nnextractor.Taskflow.prototype.hasOpType = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional RecursivePrimitive op_params = 5;
+ * @return {?proto.nnextractor.RecursivePrimitive}
+ */
+proto.nnextractor.Taskflow.prototype.getOpParams = function() {
+  return /** @type{?proto.nnextractor.RecursivePrimitive} */ (
+    jspb.Message.getWrapperField(this, proto.nnextractor.RecursivePrimitive, 5));
+};
+
+
+/**
+ * @param {?proto.nnextractor.RecursivePrimitive|undefined} value
+ * @return {!proto.nnextractor.Taskflow} returns this
+*/
+proto.nnextractor.Taskflow.prototype.setOpParams = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.nnextractor.Taskflow} returns this
+ */
+proto.nnextractor.Taskflow.prototype.clearOpParams = function() {
+  return this.setOpParams(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.nnextractor.Taskflow.prototype.hasOpParams = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
