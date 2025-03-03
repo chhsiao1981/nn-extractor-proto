@@ -122,7 +122,7 @@ export interface NII {
     affine: number[];
 }
 /**
- * OpItem
+ * OpItem;
  *
  * have op_params optional due to inefficient encode.
  *      possibly can be retrieved from metadata.
@@ -275,13 +275,9 @@ export interface NNRecord {
      */
     meta?: NNRecordMeta;
     /**
-     * @generated from protobuf field: optional nnextractor.OpType op_type = 7;
+     * @generated from protobuf field: optional nnextractor.OpItem op_item = 7;
      */
-    opType?: OpType;
-    /**
-     * @generated from protobuf field: optional nnextractor.Item op_params = 8;
-     */
-    opParams?: Item;
+    opItem?: OpItem;
 }
 /**
  * NNParameter
@@ -814,7 +810,11 @@ export enum NNRecordType {
      *
      * @generated from protobuf enum value: NNR_META = 5;
      */
-    NNR_META = 5
+    NNR_META = 5,
+    /**
+     * @generated from protobuf enum value: NNR_OP_ITEM = 6;
+     */
+    NNR_OP_ITEM = 6
 }
 /**
  * @generated from protobuf enum nnextractor.TaskflowType
@@ -987,8 +987,7 @@ class NNRecord$Type extends MessageType<NNRecord> {
             { no: 4, name: "records", kind: "message", repeat: 1 /*RepeatType.PACKED*/, T: () => NNRecord },
             { no: 5, name: "the_map", kind: "map", K: 9 /*ScalarType.STRING*/, V: { kind: "message", T: () => NNRecord } },
             { no: 6, name: "meta", kind: "message", T: () => NNRecordMeta },
-            { no: 7, name: "op_type", kind: "enum", opt: true, T: () => ["nnextractor.OpType", OpType] },
-            { no: 8, name: "op_params", kind: "message", T: () => Item }
+            { no: 7, name: "op_item", kind: "message", T: () => OpItem }
         ]);
     }
 }
