@@ -95,21 +95,21 @@ export interface NII {
      */
     tensor?: NNTensor;
     /**
-     * @generated from protobuf field: repeated double origin = 2;
+     * @generated from protobuf field: repeated double origin_ras = 2;
      */
-    origin: number[];
+    originRas: number[];
     /**
      * flattened [[0, 1, 2],
      *            [3, 4, 5],
      *            [6, 7, 8]]
      *
-     * @generated from protobuf field: repeated double direction = 3;
+     * @generated from protobuf field: repeated double direction_ras = 3;
      */
-    direction: number[];
+    directionRas: number[];
     /**
-     * @generated from protobuf field: repeated double spacing = 4;
+     * @generated from protobuf field: repeated double spacing_ras = 4;
      */
-    spacing: number[];
+    spacingRas: number[];
     /**
      * optional
      * flattened [[ 0,  1,  2,  3],
@@ -117,9 +117,9 @@ export interface NII {
      *            [ 8,  9, 10, 11],
      *            [12, 13, 14, 15]]
      *
-     * @generated from protobuf field: repeated double affine = 5;
+     * @generated from protobuf field: repeated double affine_ras = 5;
      */
-    affine: number[];
+    affineRas: number[];
 }
 /**
  * OpItem;
@@ -906,10 +906,10 @@ class NII$Type extends MessageType<NII> {
     constructor() {
         super("nnextractor.NII", [
             { no: 1, name: "tensor", kind: "message", T: () => NNTensor },
-            { no: 2, name: "origin", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 1 /*ScalarType.DOUBLE*/ },
-            { no: 3, name: "direction", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 1 /*ScalarType.DOUBLE*/ },
-            { no: 4, name: "spacing", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 1 /*ScalarType.DOUBLE*/ },
-            { no: 5, name: "affine", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 1 /*ScalarType.DOUBLE*/ }
+            { no: 2, name: "origin_ras", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 1 /*ScalarType.DOUBLE*/ },
+            { no: 3, name: "direction_ras", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 1 /*ScalarType.DOUBLE*/ },
+            { no: 4, name: "spacing_ras", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 1 /*ScalarType.DOUBLE*/ },
+            { no: 5, name: "affine_ras", kind: "scalar", repeat: 1 /*RepeatType.PACKED*/, T: 1 /*ScalarType.DOUBLE*/ }
         ]);
     }
 }
