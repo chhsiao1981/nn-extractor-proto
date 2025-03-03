@@ -988,7 +988,8 @@ primitive: (f = msg.getPrimitive()) && proto.nnextractor.Primitive.toObject(incl
 primitivesList: jspb.Message.toObjectList(msg.getPrimitivesList(),
     proto.nnextractor.RecursivePrimitive.toObject, includeInstance),
 primitiveMapMap: (f = msg.getPrimitiveMapMap()) ? f.toObject(includeInstance, proto.nnextractor.RecursivePrimitive.toObject) : [],
-sliceList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f
+sliceList: jspb.Message.toObjectList(msg.getSliceList(),
+    proto.nnextractor.Primitive.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -1046,10 +1047,9 @@ proto.nnextractor.RecursivePrimitive.deserializeBinaryFromReader = function(msg,
          });
       break;
     case 5:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedSint32() : [reader.readSint32()]);
-      for (var i = 0; i < values.length; i++) {
-        msg.addSlice(values[i]);
-      }
+      var value = new proto.nnextractor.Primitive;
+      reader.readMessage(value,proto.nnextractor.Primitive.deserializeBinaryFromReader);
+      msg.addSlice(value);
       break;
     default:
       reader.skipField();
@@ -1109,9 +1109,10 @@ proto.nnextractor.RecursivePrimitive.serializeBinaryToWriter = function(message,
   }
   f = message.getSliceList();
   if (f.length > 0) {
-    writer.writePackedSint32(
+    writer.writeRepeatedMessage(
       5,
-      f
+      f,
+      proto.nnextractor.Primitive.serializeBinaryToWriter
     );
   }
 };
@@ -1234,30 +1235,31 @@ proto.nnextractor.RecursivePrimitive.prototype.clearPrimitiveMapMap = function()
 
 
 /**
- * repeated sint32 slice = 5;
- * @return {!Array<number>}
+ * repeated Primitive slice = 5;
+ * @return {!Array<!proto.nnextractor.Primitive>}
  */
 proto.nnextractor.RecursivePrimitive.prototype.getSliceList = function() {
-  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedField(this, 5));
+  return /** @type{!Array<!proto.nnextractor.Primitive>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.nnextractor.Primitive, 5));
 };
 
 
 /**
- * @param {!Array<number>} value
+ * @param {!Array<!proto.nnextractor.Primitive>} value
  * @return {!proto.nnextractor.RecursivePrimitive} returns this
- */
+*/
 proto.nnextractor.RecursivePrimitive.prototype.setSliceList = function(value) {
-  return jspb.Message.setField(this, 5, value || []);
+  return jspb.Message.setRepeatedWrapperField(this, 5, value);
 };
 
 
 /**
- * @param {number} value
+ * @param {!proto.nnextractor.Primitive=} opt_value
  * @param {number=} opt_index
- * @return {!proto.nnextractor.RecursivePrimitive} returns this
+ * @return {!proto.nnextractor.Primitive}
  */
-proto.nnextractor.RecursivePrimitive.prototype.addSlice = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 5, value, opt_index);
+proto.nnextractor.RecursivePrimitive.prototype.addSlice = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 5, opt_value, proto.nnextractor.Primitive, opt_index);
 };
 
 
