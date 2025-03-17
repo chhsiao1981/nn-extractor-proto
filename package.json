@@ -1,6 +1,6 @@
 {
   "name": "nn-extractor-proto",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "The protobuf definition of [nn-extractor](https://github.com/chhsiao1981/nn-extractor) and [nii-nn-explorer](https://github.com/chhsiao1981/nii-nn-explorer)",
   "author": {
     "name": "Chuan-Heng Hsiao",
