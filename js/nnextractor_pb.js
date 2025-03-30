@@ -4882,7 +4882,8 @@ proto.nnextractor.OpType = {
   O_SPACING: 8,
   O_DIRECTION: 9,
   O_AFFINE: 10,
-  O_GEO_IDENTITY: 11
+  O_GEO_IDENTITY: 11,
+  O_SEGMENTATION: 12
 };
 
 /**
