@@ -149,6 +149,9 @@ enum OpType {
 
   // geo-identity
   O_GEO_IDENTITY = 11;
+
+  // segmentation
+  O_SEGMENTATION = 12;
 }
 
 // OpItem;
